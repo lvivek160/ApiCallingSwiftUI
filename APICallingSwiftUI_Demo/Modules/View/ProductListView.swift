@@ -15,8 +15,8 @@ struct ProductListView: View {
             ScrollView {
                 productGridView
             }
-            .onAppear {
-                viewModel.fetchProduct()
+            .task {
+                await viewModel.fetchProduct()
             }
             .navigationTitle("Products")
             .navigationBarTitleDisplayMode(.inline)

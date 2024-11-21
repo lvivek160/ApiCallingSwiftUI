@@ -11,15 +11,17 @@ import Foundation
 final class ProductViewModel: ObservableObject {
     @Published var products: [Product] = []
     @Published var errorMessage: String?
-    private let repository = ProductRepository()
     
-    func fetchProduct() {
-        Task {
-            do {
-                products = try await repository.fetchProduct()
-            } catch let error as APIError {
-                errorMessage = error.errorDescription
-            }
+    private let repository: ProductRepositoryProtocol = ProductRepository()
+    
+    func fetchProduct() async {
+        errorMessage = nil
+        do {
+            products = try await repository.fetchProduct()
+        } catch let error as APIError {
+            errorMessage = error.errorDescription
+        } catch {
+            errorMessage = APIError.unknownError("").errorDescription
         }
     }
 }

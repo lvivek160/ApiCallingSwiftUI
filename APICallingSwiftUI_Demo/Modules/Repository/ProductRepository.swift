@@ -7,12 +7,12 @@
 
 import Foundation
 
+protocol ProductRepositoryProtocol {
+    func fetchProduct() async throws -> [Product]
+}
+
 final class ProductRepository {
     private let networkManager = NetworkManager.shared
-    
-    func fetchProduct() async throws -> [Product] {
-        return try await fetchProductFromAPI()
-    }
     
     private func fetchProductFromAPI() async throws -> [Product] {
         let response = try await networkManager.request(
@@ -20,5 +20,11 @@ final class ProductRepository {
             responseType: ProductModel.self
         )
         return response.products ?? []
+    }
+}
+
+extension ProductRepository: ProductRepositoryProtocol {
+    func fetchProduct() async throws -> [Product] {
+        return try await fetchProductFromAPI()
     }
 }

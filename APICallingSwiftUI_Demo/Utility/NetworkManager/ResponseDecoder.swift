@@ -8,7 +8,11 @@
 import Foundation
 
 final class ResponseDecoder {
-    private let decoder = JSONDecoder()
+    private var decoder: JSONDecoder
+    
+    init(decoder: JSONDecoder = JSONDecoder()) {
+        self.decoder = decoder
+    }
     
     func decodeResponse<T: Decodable>(data: Data, responseType: T.Type) async throws -> T {
         do {

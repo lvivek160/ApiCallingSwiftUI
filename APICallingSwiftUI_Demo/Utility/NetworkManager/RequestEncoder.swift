@@ -8,7 +8,11 @@
 import Foundation
 
 final class RequestEncoder {
-    private let encoder = JSONEncoder()
+    private var encoder: JSONEncoder
+    
+    init(encoder: JSONEncoder = JSONEncoder()) {
+        self.encoder = encoder
+    }
     
     func encodeRequest<T: Encodable>(_ value: T) async throws -> Data {
         do {
