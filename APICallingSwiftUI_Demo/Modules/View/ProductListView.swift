@@ -9,18 +9,21 @@ import SwiftUI
 
 struct ProductListView: View {
     @StateObject private var viewModel = ProductViewModel()
+    @State private var isLoading: Bool = false
     
     var body: some View {
         NavigationStack {
             ScrollView {
                 productGridView
             }
-            .task {
-                await viewModel.fetchProduct()
-            }
             .navigationTitle("Products")
             .navigationBarTitleDisplayMode(.inline)
-            .padding()
+            .padding(.horizontal)
+            .task {
+                isLoading = true
+                await viewModel.fetchProduct()
+                isLoading = false
+            }
         }
     }
     
