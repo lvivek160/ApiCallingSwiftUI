@@ -15,6 +15,9 @@ struct ProductListView: View {
             ScrollView {
                 productGridView
             }
+            .onAppear {
+                viewModel.fetchProduct()
+            }
             .navigationTitle("Products")
             .navigationBarTitleDisplayMode(.inline)
             .padding()

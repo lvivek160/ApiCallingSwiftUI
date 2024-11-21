@@ -44,6 +44,7 @@ struct ProductCellView: View {
             },
             placeholder: {
                 ProgressView()
+                    .aspectRatio(1/1, contentMode: .fit)
             }
         )
         .aspectRatio(1/1, contentMode: .fit)
