@@ -33,7 +33,10 @@ struct ProductListView: View {
             spacing: 8
         ) {
             ForEach(viewModel.products, id: \.self) { product in
-                ProductCellView(product: product)
+                NavigationLink(destination: ProductDetailView()) {
+                    ProductCellView(product: product)
+                        .tint(.black)
+                }
             }
         }
     }
