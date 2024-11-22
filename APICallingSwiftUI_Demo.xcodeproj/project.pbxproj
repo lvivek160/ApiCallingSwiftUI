@@ -25,6 +25,7 @@
 		18E292B82CEF750B007F7219 /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E292B72CEF750B007F7219 /* ProductDetailView.swift */; };
 		18F8524B2CF060BC00143977 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8524A2CF060BC00143977 /* LoadingView.swift */; };
 		18F8524D2CF0684200143977 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8524C2CF0684200143977 /* BaseViewModel.swift */; };
+		18F8524F2CF06E7C00143977 /* ProductDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8524E2CF06E7C00143977 /* ProductDetailViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		18E292B72CEF750B007F7219 /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
 		18F8524A2CF060BC00143977 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		18F8524C2CF0684200143977 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
+		18F8524E2CF06E7C00143977 /* ProductDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +158,7 @@
 			children = (
 				18E292A72CEF3EB4007F7219 /* ProductViewModel.swift */,
 				18F8524C2CF0684200143977 /* BaseViewModel.swift */,
+				18F8524E2CF06E7C00143977 /* ProductDetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				18E292B42CEF514D007F7219 /* ResponseDecoder.swift in Sources */,
 				18E2929E2CEF0910007F7219 /* ProductListView.swift in Sources */,
 				18E292B02CEF4F4E007F7219 /* APIEndpoint.swift in Sources */,
+				18F8524F2CF06E7C00143977 /* ProductDetailViewModel.swift in Sources */,
 				18F8524D2CF0684200143977 /* BaseViewModel.swift in Sources */,
 				18E292B62CEF519B007F7219 /* RequestEncoder.swift in Sources */,
 				18E292AE2CEF4E33007F7219 /* ProductRepository.swift in Sources */,

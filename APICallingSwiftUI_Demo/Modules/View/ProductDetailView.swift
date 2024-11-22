@@ -8,15 +8,19 @@
 import SwiftUI
 
 struct ProductDetailView: View {
-    @StateObject var viewModel: ProductViewModel
+    @StateObject var viewModel: ProductDetailViewModel
     
     var body: some View {
-        Text("Hello, World!")
+        Text(viewModel.product.title ?? "")
     }
 }
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView(viewModel: ProductViewModel())
+        ProductDetailView(
+            viewModel: ProductDetailViewModel(
+                product: ProductModel.dummyProduct
+            )
+        )
     }
 }

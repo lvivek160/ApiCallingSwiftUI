@@ -17,7 +17,7 @@ struct ProductListView: View {
                     productGridView
                 }
                
-                LoadingView(isLoading: $viewModel.isLoading)
+                LoadingView(isLoading: viewModel.isLoading)
             }
             .navigationTitle("Products")
             .navigationBarTitleDisplayMode(.inline)
@@ -45,12 +45,9 @@ struct ProductListView: View {
         ) {
             ForEach(viewModel.products, id: \.self) { product in
                 NavigationLink(
-                    destination: ProductDetailView(viewModel: viewModel)
+                    destination: ProductDetailView(viewModel: ProductDetailViewModel(product: product))
                 ) {
                     ProductCellView(product: product)
-                      .onTapGesture {
-                          viewModel.selectedProduct = product
-                      }
                 }
             }
         }

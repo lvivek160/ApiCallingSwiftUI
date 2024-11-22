@@ -15,6 +15,8 @@ final class ProductViewModel: BaseViewModel {
     private let repository: ProductRepositoryProtocol = ProductRepository()
     
     func fetchProduct() async {
+        guard products.isEmpty else { return }
+        
         errorMessage = nil
         isLoading = true
         do {

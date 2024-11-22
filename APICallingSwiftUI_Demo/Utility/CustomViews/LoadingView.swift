@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoadingView: View {
-    @Binding var isLoading: Bool
+    var isLoading: Bool
     var message: String? = "Loading..."
     var backgroundOpacity: Double = 0.4
     var showDimBackground: Bool = true
@@ -49,6 +49,6 @@ struct LoadingView: View {
 
 struct LoadingView_Previews: PreviewProvider {
     static var previews: some View {
-        LoadingView(isLoading: .constant(true))
+        LoadingView(isLoading: true)
     }
 }
