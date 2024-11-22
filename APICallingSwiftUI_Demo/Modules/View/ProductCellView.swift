@@ -29,6 +29,7 @@ struct ProductCellView: View {
                 review
             }
         }
+        .tint(.black)
         .padding(12)
         .overlay {
             RoundedRectangle(cornerRadius: 24)
@@ -118,6 +119,7 @@ struct ProductCellView: View {
             Text(isLike ? "Saved for later" : "Save for later")
                 .font(.system(size: 10, weight: .regular))
                 .foregroundColor(isLike ? .red : .gray)
+                .multilineTextAlignment(.leading)
         }
     }
 }

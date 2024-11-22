@@ -9,21 +9,32 @@ import SwiftUI
 
 struct ProductListView: View {
     @StateObject private var viewModel = ProductViewModel()
-    @State private var isLoading: Bool = false
     
     var body: some View {
         NavigationStack {
-            ScrollView {
-                productGridView
+            ZStack {
+                ScrollView {
+                    productGridView
+                }
+               
+                LoadingView(isLoading: $viewModel.isLoading)
             }
             .navigationTitle("Products")
             .navigationBarTitleDisplayMode(.inline)
-            .padding(.horizontal)
             .task {
-                isLoading = true
                 await viewModel.fetchProduct()
-                isLoading = false
             }
+            .alert(
+                viewModel.errorTitle,
+                isPresented: $viewModel.isShowAlert,
+                actions: {
+                    Button("OK") {}
+                },
+                message: {
+                    Text(viewModel.errorMessage ?? "")
+                }
+            )
+
         }
     }
     
@@ -33,12 +44,17 @@ struct ProductListView: View {
             spacing: 8
         ) {
             ForEach(viewModel.products, id: \.self) { product in
-                NavigationLink(destination: ProductDetailView()) {
+                NavigationLink(
+                    destination: ProductDetailView(viewModel: viewModel)
+                ) {
                     ProductCellView(product: product)
-                        .tint(.black)
+                      .onTapGesture {
+                          viewModel.selectedProduct = product
+                      }
                 }
             }
         }
+        .padding(.horizontal)
     }
 }
 

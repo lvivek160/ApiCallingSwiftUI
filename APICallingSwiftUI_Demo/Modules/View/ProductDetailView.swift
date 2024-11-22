@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ProductDetailView: View {
+    @StateObject var viewModel: ProductViewModel
+    
     var body: some View {
         Text("Hello, World!")
     }
@@ -15,6 +17,6 @@ struct ProductDetailView: View {
 
 struct ProductDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        ProductDetailView()
+        ProductDetailView(viewModel: ProductViewModel())
     }
 }
