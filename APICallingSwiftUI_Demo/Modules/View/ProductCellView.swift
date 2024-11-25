@@ -38,23 +38,7 @@ struct ProductCellView: View {
     }
     
     private var thumbnailImageView: some View {
-        GeometryReader { geometry in
-            AsyncImage(
-                url: URL(string: product.thumbnail ?? ""),
-                content: { image in
-                    image
-                        .resizable(resizingMode: .stretch)
-                        .aspectRatio(contentMode: .fill)
-                },
-                placeholder: {
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: .gray))
-                }
-            )
-            .frame(width: geometry.size.width, height: geometry.size.width)
-            .clipped()
-        }
-        .aspectRatio(1, contentMode: .fit)
+        AsyncImageView(urlString: product.thumbnail)
     }
     
     private var priceText: some View {

@@ -11,7 +11,7 @@ struct ProductListView: View {
     @StateObject private var viewModel = ProductViewModel()
     
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 ScrollView {
                     productGridView

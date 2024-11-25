@@ -36,7 +36,8 @@ enum APIEndpoint {
 extension APIEndpoint: Endpoint {
 
     var baseURL: String {
-        return "https://dummyjson.com/"
+        //return ProcessInfo.processInfo.environment["BASE_URL"] ?? ""
+         return "https://dummyjson.com/"
     }
 
     var path: String {

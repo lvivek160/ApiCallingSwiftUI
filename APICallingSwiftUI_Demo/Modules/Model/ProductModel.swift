@@ -33,7 +33,12 @@ struct ProductModel: Codable, Hashable {
         returnPolicy: "",
         minimumOrderQuantity: 1,
         meta: nil,
-        images: [],
+        images: [
+          "https://g1.img-dpreview.com/80513CED05A944D08EDD9F1A75A58764.jpg",
+          "https://g2.img-dpreview.com/81C81CB44922409EA3C99FA3E42369CD.jpg",
+          "https://g1.img-dpreview.com/FF9CE2684532407EA326F7E9562EB91A.jpg",
+          "https://g1.img-dpreview.com/8ABA6362533940E683F5870B45905762.jpg",
+        ],
         thumbnail: "https://cdn.dummyjson.com/products/images/beauty/Essence%20Mascara%20Lash%20Princess/thumbnail.png"
     )
 }

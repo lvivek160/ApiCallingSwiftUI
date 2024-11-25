@@ -11,7 +11,47 @@ struct ProductDetailView: View {
     @StateObject var viewModel: ProductDetailViewModel
     
     var body: some View {
-        Text(viewModel.product.title ?? "")
+        ScrollView {
+            VStack {
+                mainImageView
+                thumbnailGridView
+            }
+        }
+    }
+    
+    private var mainImageView: some View {
+        AsyncImageView(urlString: viewModel.getSelectedImage())
+            .padding()
+    }
+    
+    private var thumbnailGridView: some View {
+        LazyHGrid(rows: [GridItem(.flexible())]) {
+            ForEach(
+                viewModel.getProductImagesIndices(),
+                id: \.self
+            ) { index in
+                Button(action: {
+                    viewModel.selectedImageIndex = index
+                }) {
+                    ProductDetailImageCell(
+                        imageString: viewModel.getProductImage(by: index),
+                        isSelected: .init(get: { viewModel.isSelected(by: index) }, set: { _ in })
+                    )
+                }
+                .frame(width: 60)
+            }
+        }
+    }
+    
+}
+
+struct ProductDetailImageCell: View {
+    let imageString: String?
+    @Binding var isSelected: Bool
+    
+    var body: some View {
+        AsyncImageView(urlString: imageString)
+            .border(isSelected ? .red : .clear)
     }
 }
 
