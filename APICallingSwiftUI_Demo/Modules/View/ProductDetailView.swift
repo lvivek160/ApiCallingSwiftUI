@@ -11,47 +11,121 @@ struct ProductDetailView: View {
     @StateObject var viewModel: ProductDetailViewModel
     
     var body: some View {
-        ScrollView {
-            VStack {
-                mainImageView
-                thumbnailGridView
-            }
-        }
-    }
-    
-    private var mainImageView: some View {
-        AsyncImageView(urlString: viewModel.getSelectedImage())
-            .padding()
-    }
-    
-    private var thumbnailGridView: some View {
-        LazyHGrid(rows: [GridItem(.flexible())]) {
-            ForEach(
-                viewModel.getProductImagesIndices(),
-                id: \.self
-            ) { index in
-                Button(action: {
-                    viewModel.selectedImageIndex = index
-                }) {
-                    ProductDetailImageCell(
-                        imageString: viewModel.getProductImage(by: index),
-                        isSelected: .init(get: { viewModel.isSelected(by: index) }, set: { _ in })
-                    )
+        VStack {
+            ScrollView {
+                VStack(spacing: 0) {
+                    VStack(spacing: 0) {
+                        titleSubTitleView
+                        priceAndImageView
+                    }
+                    .background {
+                        Color(.systemPink).opacity(0.5)
+                    }
+                    
+                    contentView
                 }
-                .frame(width: 60)
             }
+            
+            bottomView
+        }
+        .frame(maxWidth: .infinity)
+    }
+    
+    private var titleSubTitleView: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(viewModel.product.category ?? "")
+                .font(.system(size: 18, weight: .medium))
+            Text(viewModel.product.title ?? "")
+                .font(.system(size: 24, weight: .bold))
+        }
+        .foregroundColor(.white)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal, 16)
+    }
+    
+    private var priceAndImageView: some View {
+        ZStack {
+            VStack {
+                Spacer()
+                RoundedCornerShape(corners: [.topLeft, .topRight], radius: 32)
+                    .frame(height: 80)
+                    .foregroundColor(.white)
+            }
+            
+            HStack(alignment: .center, spacing: 10) {
+                priceText
+                AsyncImageView(urlString: viewModel.product.thumbnail)
+                    .padding(.trailing, 10)
+                    .shadow(color: .gray, radius: 10, x: -2, y: 5)
+            }
+            .padding(.horizontal, 16)
         }
     }
     
-}
-
-struct ProductDetailImageCell: View {
-    let imageString: String?
-    @Binding var isSelected: Bool
+    private var priceText: some View {
+        VStack(alignment: .leading, spacing: 2) {
+            Text("Price")
+                .font(.system(size: 15, weight: .medium))
+            Text("$" + (viewModel.product.price?.description ?? ""))
+                .font(.system(size: 32, weight: .heavy))
+            Spacer().frame(height: 50)
+        }
+    }
     
-    var body: some View {
-        AsyncImageView(urlString: imageString)
-            .border(isSelected ? .red : .clear)
+    private var contentView: some View {
+        VStack(spacing: 12) {
+            HStack {
+                ratingView
+                Spacer()
+                productSizeView
+            }
+            
+            Text(viewModel.product.description ?? "")
+                .font(.system(size: 14, weight: .medium))
+                .foregroundColor(.gray)
+        }
+        .padding(.horizontal, 16)
+    }
+    
+    private var ratingView: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text("Rating")
+                .foregroundColor(.gray)
+                .font(.system(size: 14, weight: .medium))
+            GrayStarRatingView(
+                rating: viewModel.product.rating ?? 0.0
+            )
+        }
+    }
+    
+    private var bottomView: some View {
+        VStack {
+            addToCartButton
+        }
+        .padding(.horizontal, 16)
+    }
+    
+    private var addToCartButton: some View {
+        Button(action: {
+            
+        }, label: {
+            Text("ADD TO CART")
+                .font(.system(size: 18, weight: .bold))
+                .frame(maxWidth: .infinity)
+                .foregroundColor(.white)
+                .padding(.vertical, 12)
+                .background(Color(.systemPink).opacity(0.5))
+                .cornerRadius(.infinity)
+        })
+    }
+    
+    private var productSizeView: some View {
+        VStack(alignment: .trailing, spacing: 6) {
+            Text("Sizes")
+                .foregroundColor(.gray)
+                .font(.system(size: 14, weight: .medium))
+            ProductSizesView()
+        }
     }
 }
 
