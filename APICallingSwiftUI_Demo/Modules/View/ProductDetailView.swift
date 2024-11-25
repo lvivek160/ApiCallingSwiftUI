@@ -7,33 +7,39 @@
 
 import SwiftUI
 
+
 struct ProductDetailView: View {
+    
     @StateObject var viewModel: ProductDetailViewModel
     
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             ScrollView {
                 VStack(spacing: 0) {
+                    TopSpacingView(withNavigationBarHeight: true)
+                        .background(Color(.systemPink).opacity(0.5))
+                    
                     VStack(spacing: 0) {
                         titleSubTitleView
                         priceAndImageView
                     }
+                    .padding(.top, 10)
                     .background {
                         Color(.systemPink).opacity(0.5)
                     }
-                    
+                
                     contentView
                 }
             }
-            
             bottomView
         }
+        .ignoresSafeArea()
         .frame(maxWidth: .infinity)
     }
     
     private var titleSubTitleView: some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(viewModel.product.category ?? "")
+            Text(viewModel.product.category?.capitalized ?? "")
                 .font(.system(size: 18, weight: .medium))
             Text(viewModel.product.title ?? "")
                 .font(.system(size: 24, weight: .bold))
@@ -102,7 +108,7 @@ struct ProductDetailView: View {
         VStack {
             addToCartButton
         }
-        .padding(.horizontal, 16)
+        .padding()
     }
     
     private var addToCartButton: some View {
@@ -113,7 +119,7 @@ struct ProductDetailView: View {
                 .font(.system(size: 18, weight: .bold))
                 .frame(maxWidth: .infinity)
                 .foregroundColor(.white)
-                .padding(.vertical, 12)
+                .frame(height: 48)
                 .background(Color(.systemPink).opacity(0.5))
                 .cornerRadius(.infinity)
         })

@@ -30,6 +30,8 @@
 		18F852532CF4522300143977 /* RoundedCornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F852522CF4522300143977 /* RoundedCornerShape.swift */; };
 		18F852552CF4591B00143977 /* GrayStarRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F852542CF4591B00143977 /* GrayStarRatingView.swift */; };
 		18F852572CF45B0F00143977 /* ProductSizesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F852562CF45B0F00143977 /* ProductSizesView.swift */; };
+		18F852592CF474E200143977 /* Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F852582CF474E200143977 /* Utility.swift */; };
+		18F8525B2CF4775500143977 /* TopSpacingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F8525A2CF4775500143977 /* TopSpacingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +59,8 @@
 		18F852522CF4522300143977 /* RoundedCornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedCornerShape.swift; sourceTree = "<group>"; };
 		18F852542CF4591B00143977 /* GrayStarRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrayStarRatingView.swift; sourceTree = "<group>"; };
 		18F852562CF45B0F00143977 /* ProductSizesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductSizesView.swift; sourceTree = "<group>"; };
+		18F852582CF474E200143977 /* Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utility.swift; sourceTree = "<group>"; };
+		18F8525A2CF4775500143977 /* TopSpacingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSpacingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +204,8 @@
 				18F852522CF4522300143977 /* RoundedCornerShape.swift */,
 				18F852542CF4591B00143977 /* GrayStarRatingView.swift */,
 				18F852562CF45B0F00143977 /* ProductSizesView.swift */,
+				18F852582CF474E200143977 /* Utility.swift */,
+				18F8525A2CF4775500143977 /* TopSpacingView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -284,10 +290,12 @@
 				18F8524D2CF0684200143977 /* BaseViewModel.swift in Sources */,
 				18F852572CF45B0F00143977 /* ProductSizesView.swift in Sources */,
 				18F852552CF4591B00143977 /* GrayStarRatingView.swift in Sources */,
+				18F8525B2CF4775500143977 /* TopSpacingView.swift in Sources */,
 				18E292B62CEF519B007F7219 /* RequestEncoder.swift in Sources */,
 				18E292AE2CEF4E33007F7219 /* ProductRepository.swift in Sources */,
 				18E292B22CEF501F007F7219 /* NetworkManager.swift in Sources */,
 				18F8524B2CF060BC00143977 /* LoadingView.swift in Sources */,
+				18F852592CF474E200143977 /* Utility.swift in Sources */,
 				18E2928C2CEF04C8007F7219 /* ContentView.swift in Sources */,
 				18E2928A2CEF04C8007F7219 /* APICallingSwiftUI_DemoApp.swift in Sources */,
 				18F852532CF4522300143977 /* RoundedCornerShape.swift in Sources */,

@@ -16,7 +16,6 @@ struct ProductListView: View {
                 ScrollView {
                     productGridView
                 }
-               
                 LoadingView(isLoading: viewModel.isLoading)
             }
             .navigationTitle("Products")
